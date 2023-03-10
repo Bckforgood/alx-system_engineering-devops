@@ -1,2 +1,2 @@
 #!/bin/bash
-for dir in $(find . -type d) do chmod a+x "$dir" done
+find . -type d -exec chmod a+x {} +
