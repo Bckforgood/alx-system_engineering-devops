@@ -1,2 +1,4 @@
 #!/bin/bash
-echo "Best School" > '*\''Best School'\''*$?******:)'
+touch '*'"'"'Best School'"'"'*$?******:)' # Create the file with the specified name
+echo "Best School" >> '*'"'"'Best School'"'"'*$?******:)' # Write the text to the file
+
