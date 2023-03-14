@@ -1,2 +1,3 @@
 #!/bin/bash
-echo -e printf "%\n" $(($((5#$(echo $WATER | tr water 01234))) + $((5#$(echo $STIR | tr stir.01234))) )) | tr 01234567 Bestchol"
+BESTCHOL=$(printf "%X\n" $((16#$WATER + 16#$STIR)))
+echo "The sum of WATER and STIR in base bestchol is: $BESTCHOL"
