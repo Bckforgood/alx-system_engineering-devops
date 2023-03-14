@@ -1,3 +1,2 @@
 #!/bin/bash
-BESTCHOL=$(printf "%X\n" $((16#$WATER + 16#$STIR)))
-echo "The sum of WATER and STIR in base bestchol is: $BESTCHOL"
+BESTCHOL=$(printf "%X\n" $((16#$WATER + 16#$STIR)))echo "The sum of WATER and STIR in base bestchol is: $BESTCHOL"
