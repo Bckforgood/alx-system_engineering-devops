@@ -1,2 +1,2 @@
 #!/bin/bash
-echo "The sum of WATER and STIR in base bestchol is: $(echo "obase=bestchol ibase=16 $WATER + $STIR" |"
+echo -n $(printf "%X" $((16#$WATER + 16#$STIR))) | xxd -r -p
