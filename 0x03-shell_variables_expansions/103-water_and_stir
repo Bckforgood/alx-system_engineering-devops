@@ -1,2 +1,2 @@
 #!/bin/bash
-export BESTCHOL=$(( ${WATER:-0} + ${STIR:-0} ))
+export bestchol=$(( ${WATER:-0} + ${STIR:-0} ))
