@@ -1,2 +1,2 @@
 #!/bin/bash
-echo -n $(printf "%X" $((16#$WATER + 16#$STIR))) | xxd -r -p
+echo -n $(printf "%X" $((16#$WATER + 16#$STIR))) | xxd -r -p | iconv -f utf-8 -t bestchol
