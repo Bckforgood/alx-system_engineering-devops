@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
 
-ssh -i ~/.ssh/school abderrazzak-ThinkPad-L450@102.101.128.154
+# Connect to the server using ssh with the private key
+
+ssh -i ~/.ssh/school ubuntu@hostname -I | cut -d' ' -f1
 
