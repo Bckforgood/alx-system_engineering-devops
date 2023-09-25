@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+ssh -i ~/.ssh/school abderrazzak-ThinkPad-L450@102.101.128.154
+
