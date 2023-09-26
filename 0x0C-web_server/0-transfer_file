@@ -1,0 +1,25 @@
+#!/bin/bash
+
+# Check if all 4 parameters are provided
+if [ "$#" -lt 4 ]; then
+    echo "Usage: $0 PATH_TO_FILE IP USERNAME PATH_TO_SSH_KEY"
+    exit 1
+fi
+
+# Assign parameters to variables
+FILE_PATH=$1
+SERVER_IP=$2
+USERNAME=$3
+SSH_KEY_PATH=$4
+
+# Transfer the file using scp
+scp -o StrictHostKeyChecking=no -i "$SSH_KEY_PATH" "$FILE_PATH" "$USERNAME"@"$SERVER_IP":~
+
+Example usage:
+
+bash
+
+bash transfer_file.sh /path/to/local/file.txt 192.168.1.100 username /path/to/private/key.pem
+
+This example would transfer the file located at "/path/to/local/file.txt" to the home directory of the user "username" on the server with IP address "192.168.1.100", using the specified SSH private key.
+
