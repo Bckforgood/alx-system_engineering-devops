@@ -1,6 +1,8 @@
-#create a file in /tmp.
+# Filename: kill_process.pp
 
 exec { 'killmenow':
-  command     => 'pkill -f killmenow',
+  command     => 'pkill killmenow',
+  path        => '/bin:/usr/bin',
+  logoutput   => true,
   refreshonly => true,
 }
