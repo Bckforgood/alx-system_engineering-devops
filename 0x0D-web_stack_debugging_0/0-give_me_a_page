@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+# This script configures Apache in the Docker container to serve a page with "Hello Holberton"
+
+# Install Apache
+apt-get update
+apt-get install -y apache2
+
+# Configure Apache
+echo '<VirtualHost *:80>
+    DocumentRoot /var/www/html
+    <Directory "/var/www/html">
+        Options Indexes FollowSymLinks
+        AllowOverride All
+        Require all granted
+    </Directory>
+</VirtualHost>' > /etc/apache2/sites-available/000-default.conf
+
+# Create the HTML file
+echo 'Hello Holberton' > /var/www/html/index.html
+
+# Restart Apache
+service apache2 restart
+
