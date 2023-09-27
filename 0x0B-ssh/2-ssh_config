@@ -1,3 +1,10 @@
-Host 54.90.54.242
+#!/usr/bin/env bash
+# SSH client configuration
+
+    HostName 54.90.54.242
+    User ubuntu
     IdentityFile ~/.ssh/school
     PasswordAuthentication no
+    PubKeyAuthentication yes
+
+# newline

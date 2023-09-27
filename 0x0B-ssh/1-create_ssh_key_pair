@@ -11,8 +11,8 @@ key_bits=4096
 passphrase="betty"
 
 # Generate the key pair
-ssh-keygen -t rsa -b "$key_bits" -C "Generated Key" -f "$private_key_name" -N "$passphrase"
+ssh-keygen -t rsa -b "$key_bits" -C "Generated Key" -f "$private_key_school" -N "$passphrase"
 
 # Output success message
-echo "RSA key pair generated. Private key: $private_key_name, Public key: $private_key_name.pub"
+echo "RSA key pair generated. Private key: $private_key_school, Public key: $private_key_school.pub"
 
