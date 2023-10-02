@@ -1,25 +1,28 @@
-#!/bin/bash
+#!/usr/bin/env bash
+# A Bash script that transfers a file from a client to a server:
 
-# Check if all 4 parameters are provided
-if [ "$#" -lt 4 ]; then
-    echo "Usage: $0 PATH_TO_FILE IP USERNAME PATH_TO_SSH_KEY"
-    exit 1
+# Check if at least 4 arguments are passed to the script
+if [[ "$#" -lt 4 ]]; then
+  echo "Usage: $0 PATH_TO_FILE IP USERNAME PATH_TO_SSH_KEY"
+  exit 1
 fi
 
-# Assign parameters to variables
-FILE_PATH=$1
-SERVER_IP=$2
-USERNAME=$3
-SSH_KEY_PATH=$4
+# Assign the arguments to variables for readability
 
-# Transfer the file using scp
-scp -o StrictHostKeyChecking=no -i "$SSH_KEY_PATH" "$FILE_PATH" "$USERNAME"@"$SERVER_IP":~
+file_path=$1
+ip=$2
+username=$3
+ssh_key=$4
 
-Example usage:
+# Disable strict host key checking for the ssh connection
+ssh_options="-o StrictHostKeyChecking=no"
 
-bash
+# Use scp to transfer the file to the user's home directory on the remote server
+# -i option specifies the private key to use for authentication
+# $ssh_options variable sets the ssh options we need to disable strict host key checking
+# $file_path is the path to the file we want to transfer
+# $username@$ip specifies the user and IP of the remote server we want to transfer the file to
+# :~ specifies the user's home directory on the remote server
 
-bash transfer_file.sh /path/to/local/file.txt 192.168.1.100 username /path/to/private/key.pem
-
-This example would transfer the file located at "/path/to/local/file.txt" to the home directory of the user "username" on the server with IP address "192.168.1.100", using the specified SSH private key.
+scp -i "$ssh_key" $ssh_options "$file_path" "$username@$ip":~
 
