@@ -1,0 +1,8 @@
+#!/bin/env bash
+
+apt update
+apt install -y nginx
+sed -i '/listen 80 default_server;/c\    listen 80;' /etc/nginx/sites-available/default
+nginx -s reload
+
+echo "Nginx is now listening on port 80 of all active IPv4 IPs."
