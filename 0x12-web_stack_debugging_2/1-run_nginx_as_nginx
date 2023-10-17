@@ -8,8 +8,9 @@ sed -i 's/user\s*nginx;/user nginx;/' /etc/nginx/nginx.conf
 sed -i 's/listen\s*80;/listen 8080;/g' /etc/nginx/sites-available/default
 
 # Check if nginx process is running as nginx user
-ps aux | grep 'nginx: master process' | grep -q 'nginx'
-if [ $? -ne 0 ]; then
+if ps aux | grep 'nginx: master process' | grep -q 'nginx'; then
+    echo "Nginx is already running as the nginx user."
+else
     echo "Error: Nginx is not running as the nginx user."
     exit 1
 fi
@@ -18,11 +19,9 @@ fi
 service nginx restart
 
 # Verify that Nginx is listening on port 8080
-nc -z 0 8080
-if [ $? -ne 0 ]; then
+if nc -z localhost 8080; then
+    echo "Nginx is configured successfully to run as the nginx user and listen on port 8080."
+else
     echo "Error: Nginx is not listening on port 8080."
     exit 1
 fi
-
-echo "Nginx is configured successfully to run as the nginx user and listen on port 8080."
-
