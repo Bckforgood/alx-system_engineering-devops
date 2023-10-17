@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# This script configures Nginx to run as the nginx user and listen on port 8080.
+
+sed -i 's/user\s*nginx;/user nginx;/' /etc/nginx/nginx.conf
+sed -i 's/listen\s*80;/listen 8080;/g' /etc/nginx/sites-available/default
+grep -q 'nginx: master process' <(ps aux) && service nginx restart
+nc -z localhost 8080
+
