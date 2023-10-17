@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+# This script configures Nginx to run as the nginx user and listen on port 8080.
+
+# Update the nginx user in the nginx.conf file
+sed -i 's/user\s*nginx;/user nginx;/' /etc/nginx/nginx.conf
+
+# Update the default site configuration to listen on port 8080
+sed -i 's/listen\s*80;/listen 8080;/g' /etc/nginx/sites-available/default
+
+# Check if nginx process is running as nginx user
+ps aux | grep 'nginx: master process' | grep -q 'nginx'
+if [ $? -ne 0 ]; then
+    echo "Error: Nginx is not running as the nginx user."
+    exit 1
+fi
+
+# Restart Nginx for changes to take effect
+service nginx restart
+
+# Verify that Nginx is listening on port 8080
+nc -z 0 8080
+if [ $? -ne 0 ]; then
+    echo "Error: Nginx is not listening on port 8080."
+    exit 1
+fi
+
+echo "Nginx is configured successfully to run as the nginx user and listen on port 8080."
+
