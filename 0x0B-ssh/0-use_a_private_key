@@ -3,4 +3,4 @@
 
 
 # Connect to the server using SSH
-ssh -i  ubuntu@54.90.54.242
+ssh -i ~/.ssh/school ubuntu@54.90.54.242
