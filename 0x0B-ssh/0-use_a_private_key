@@ -6,4 +6,4 @@ server_ip="54.90.54.242"
 private_key="~/.ssh/school"
 
 # Connect to the server using SSH
-ssh -i $private_key ubuntu@$server_ip
+ssh -i  ubuntu@$server_ip
